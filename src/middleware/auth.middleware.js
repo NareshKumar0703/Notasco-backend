@@ -18,7 +18,7 @@ export const protect = async (req, res, next) => {
                 return errorResponse(res, 'Not authorized, user not found', 401);
             }
             req.user = user;
-            next();
+            return next();
         } catch (error) {
             console.error(error);
             return errorResponse(res, 'Not authorized, token failed', 401);
@@ -28,5 +28,6 @@ export const protect = async (req, res, next) => {
     if (!token) {
         return errorResponse(res, 'Not authorized, no token', 401);
     }
-    next();
+    // Only call next() if no response has been sent
+    // But in this logic, next() should not be called if no token is present
 };
