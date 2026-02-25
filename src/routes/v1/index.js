@@ -2,6 +2,7 @@ import express from 'express';
 import authRoutes from '../../modules/auth/auth.route.js';
 import userRoutes from '../../modules/user/user.route.js';
 import roleRoutes from '../../modules/role/role.route.js';
+import postRoutes from '../../modules/post/post.route.js';
 import healthRoutes from '../health.route.js';
 import docsRoutes from '../docs.route.js';
 
@@ -19,6 +20,10 @@ const COMPONENT_ROUTES = [
     {
         path: '/roles',
         route: roleRoutes
+    },
+    {
+        path: '/posts',
+        route: postRoutes
     },
     {
         path: '/health',
