@@ -139,7 +139,7 @@
 /**
  * @swagger
  * paths:
- *   /posts/{id}/like:
+ *   /api/posts/{id}/like:
  *     patch:
  *       tags:
  *         - Posts
@@ -150,18 +150,6 @@
  *           schema:
  *             type: string
  *           required: true
- *       requestBody:
- *         required: true
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               required:
- *                 - userId
- *               properties:
- *                 userId:
- *                   type: string
- *                   description: User ID who is liking the post
  *       responses:
  *         200:
  *           description: Like toggled successfully

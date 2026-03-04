@@ -12,7 +12,6 @@ router.get("/:id", postController.getById);
 router.put("/:id", postController.update);
 router.delete("/:id", postController.delete);
 
-// Like Toggle
 router.patch("/:id/like", postController.toggleLike);
 
 export default router;

@@ -3,8 +3,10 @@ import authRoutes from '../../modules/auth/auth.route.js';
 import userRoutes from '../../modules/user/user.route.js';
 import roleRoutes from '../../modules/role/role.route.js';
 import postRoutes from '../../modules/post/post.route.js';
+
 import healthRoutes from '../health.route.js';
 import docsRoutes from '../docs.route.js';
+import friendRoutes from '../../modules/friend/friend.route.js';
 
 const router = express.Router();
 
@@ -24,6 +26,10 @@ const COMPONENT_ROUTES = [
     {
         path: '/posts',
         route: postRoutes
+    },
+    {
+        path: '/friends',
+        route: friendRoutes
     },
     {
         path: '/health',

@@ -1,7 +1,7 @@
 /**
  * @swagger
  * paths:
- *   /users:
+ *   /api/users:
  *     post:
  *       tags:
  *         - Users

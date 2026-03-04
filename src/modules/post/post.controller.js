@@ -90,7 +90,7 @@ class PostController {
   // TOGGLE LIKE
   async toggleLike(req, res) {
     try {
-      const { userId } = req.body;
+      const { userId } = req.user._id;
       const post = await postService.toggleLike(req.params.id, userId);
 
       if (!post) {

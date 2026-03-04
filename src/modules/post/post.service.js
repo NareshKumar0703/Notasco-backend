@@ -6,7 +6,9 @@ class PostService {
   }
 
   async findAll(query = {}) {
-    return await Post.find({ isDeleted: false, ...query }).sort({ createdAt: -1 });
+    return await Post.find({ isDeleted: false, ...query })
+    .populate("author", "firstName lastName email")
+    .sort({ createdAt: -1 });
   }
 
   async findById(id) {

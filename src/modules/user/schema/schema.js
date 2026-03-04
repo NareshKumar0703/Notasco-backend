@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema(
             minlength: 8,
             private: true, 
         },
+        friends: {
+            type: Array,
+            default: [],
+        },
         role: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Role',
