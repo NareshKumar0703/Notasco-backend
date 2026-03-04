@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 const postSchema = new mongoose.Schema(
   {
     author: {
-        type: String,
-        required: true,
-        trim: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
 
     content: {
@@ -43,7 +43,7 @@ const postSchema = new mongoose.Schema(
       default: false,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.model("Post", postSchema);

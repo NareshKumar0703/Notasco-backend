@@ -4,7 +4,12 @@ class PostController {
   // CREATE
   async create(req, res) {
     try {
-      const post = await postService.create(req.body);
+      console.log(req);
+      const post = await postService.create({
+        author: req.user._id,
+        ...req.body,
+      });
+
       return res.status(201).json({
         success: true,
         message: "Post created",
@@ -18,7 +23,9 @@ class PostController {
   // GET ALL
   async getAll(req, res) {
     try {
-      const posts = await postService.findAll();
+      const posts = await postService.findAll({
+        $or: [{ visibility: "PUBLIC" }, { author: req.user._id }],
+      });
       return res.json({
         success: true,
         data: posts,
@@ -33,7 +40,9 @@ class PostController {
     try {
       const post = await postService.findById(req.params.id);
       if (!post) {
-        return res.status(404).json({ success: false, message: "Post not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Post not found" });
       }
       return res.json({ success: true, data: post });
     } catch (err) {
@@ -46,7 +55,9 @@ class PostController {
     try {
       const post = await postService.update(req.params.id, req.body);
       if (!post) {
-        return res.status(404).json({ success: false, message: "Post not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Post not found" });
       }
       return res.json({
         success: true,
@@ -63,7 +74,9 @@ class PostController {
     try {
       const post = await postService.delete(req.params.id);
       if (!post) {
-        return res.status(404).json({ success: false, message: "Post not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Post not found" });
       }
       return res.json({
         success: true,
@@ -81,7 +94,9 @@ class PostController {
       const post = await postService.toggleLike(req.params.id, userId);
 
       if (!post) {
-        return res.status(404).json({ success: false, message: "Post not found" });
+        return res
+          .status(404)
+          .json({ success: false, message: "Post not found" });
       }
 
       return res.json({
